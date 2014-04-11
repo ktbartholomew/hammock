@@ -17,6 +17,7 @@
 	}
 
 	include(HAMMOCK_ROOT."/lib/http.php");
+	include(HAMMOCK_ROOT."/lib/cron.php");
 	include(HAMMOCK_ROOT."/lib/service.php");
 	include(HAMMOCK_ROOT."/lib/auth.php");
 
