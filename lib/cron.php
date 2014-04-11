@@ -47,6 +47,18 @@
 				// Treat as a set of numbers
 				return in_array($control, $interval);
 			}
+			elseif( preg_match('/[0-9]{1,2}\,[0-9]{1,2}/', $interval) ) {
+				// Treat as a cron set
+				$set = explode(',', $interval);
+				return in_array($control, $set);
+			}
+			elseif( preg_match('/^([0-9]{1,2})-([0-9]{1,2})$/', $interval) ) {
+				// Treat as a cron range
+				preg_match('/^([0-9]{1,2})-([0-9]{1,2})$/', $interval, $matches);
+				$range = range($matches[1],$matches[2]);
+
+				return in_array($control, $range);
+			}
 			elseif( preg_match('/^\*\/([0-9]{1,2})$/', $interval) ) {
 				// Treat as a cron interval (like */5 for every 5 minutes)
 				preg_match('/^\*\/([0-9]{1,2})$/', $interval, $matches);
