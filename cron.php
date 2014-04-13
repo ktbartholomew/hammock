@@ -31,7 +31,6 @@
 				));
 
 				$list = $data->get('hook_lists', $instance->iid);
-				dumper($list);
 				$list[] = $uid;
 				$data->set('hook_lists', $instance->iid, $list);
 			}
